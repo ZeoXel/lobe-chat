@@ -4,11 +4,6 @@ import { Avatar, type AvatarProps } from '@lobehub/ui';
 import { createStyles } from 'antd-style';
 import { forwardRef } from 'react';
 
-import { BRANDING_NAME } from '@/const/branding';
-import { DEFAULT_USER_AVATAR_URL } from '@/const/meta';
-import { useUserStore } from '@/store/user';
-import { authSelectors, userProfileSelectors } from '@/store/user/selectors';
-
 const useStyles = createStyles(({ css, token }) => ({
   clickable: css`
     position: relative;
@@ -46,20 +41,17 @@ export interface UserAvatarProps extends AvatarProps {
 }
 
 const UserAvatar = forwardRef<HTMLDivElement, UserAvatarProps>(
-  ({ size = 40, background, clickable, className, style, ...rest }, ref) => {
+  ({ size = 40, clickable, className, style, ...rest }, ref) => {
     const { styles, cx } = useStyles();
-    const [avatar, username] = useUserStore((s) => [
-      userProfileSelectors.userAvatar(s),
-      userProfileSelectors.username(s),
-    ]);
 
-    const isSignedIn = useUserStore(authSelectors.isLogin);
+    // 始终使用自定义logo作为头像
+    const customLogo = '/images/logo.png';
 
     return (
       <Avatar
-        alt={isSignedIn && !!username ? username : BRANDING_NAME}
-        avatar={isSignedIn && !!avatar ? avatar : DEFAULT_USER_AVATAR_URL}
-        background={isSignedIn && avatar ? background : 'transparent'}
+        alt={'零素觉醒'}
+        avatar={customLogo}
+        background={'transparent'}
         className={cx(clickable && styles.clickable, className)}
         ref={ref}
         size={size}

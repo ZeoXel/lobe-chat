@@ -1,7 +1,8 @@
+import { Typography } from 'antd';
+import Image from 'next/image';
 import React, { ReactNode, memo } from 'react';
 import { Center, Flexbox } from 'react-layout-kit';
 
-import { ProductLogo } from '@/components/Branding';
 import InitProgress, { StageItem } from '@/components/InitProgress';
 
 interface FullscreenLoadingProps {
@@ -14,7 +15,12 @@ const FullscreenLoading = memo<FullscreenLoadingProps>(({ activeStage, stages, c
   return (
     <Flexbox height={'100%'} style={{ position: 'relative', userSelect: 'none' }} width={'100%'}>
       <Center flex={1} gap={16} width={'100%'}>
-        <ProductLogo size={48} type={'combine'} />
+        <Flexbox align="center" gap={12} horizontal>
+          <Image alt="零素觉醒" height={48} src="/images/logo.png" unoptimized width={48} />
+          <Typography.Title level={2} style={{ margin: 0 }}>
+            零素觉醒
+          </Typography.Title>
+        </Flexbox>
         {contentRender ? contentRender : <InitProgress activeStage={activeStage} stages={stages} />}
       </Center>
     </Flexbox>

@@ -20,11 +20,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lobehub/lobe-chat.git"
+    "url": "git+https://github.com/lobehub/lobe-chat.git"
   },
   "license": "MIT",
   "author": "LobeHub <i@lobehub.com>",
   "sideEffects": false,
+  "main": ".changelogrc.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
   "workspaces": [
     "packages/*"
   ],

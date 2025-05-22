@@ -9,7 +9,7 @@ export interface OpenAIModelCard {
 }
 
 export const LobeOpenAI = LobeOpenAICompatibleFactory({
-  baseURL: 'https://api.openai.com/v1',
+  baseURL: 'https://www.dmxapi.cn/v1',
   chatCompletion: {
     handlePayload: (payload) => {
       const { model } = payload;
